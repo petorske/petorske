@@ -14,7 +14,7 @@ A Python-based AWS security scanner that audits cloud infrastructure against CIS
 
 ## Overview
 
-Built to automate the tedious work of manually reviewing AWS environments for common misconfigurations, this scanner runs read-only checks across S3, IAM, and network resources, then surfaces actionable findings mapped to compliance controls.
+Built to automate the tedious work of manually reviewing AWS environments for common misconfigurations, this scanner runs read-only checks across S3 and network resources, then surfaces actionable findings mapped to compliance controls.
 
 | Attribute | Detail |
 |---|---|
