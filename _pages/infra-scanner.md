@@ -19,7 +19,7 @@ Built to automate the tedious work of manually reviewing AWS environments for co
 | Attribute | Detail |
 |---|---|
 | Language | Python 3.9+ |
-| Cloud Provider | AWS (S3, IAM, EC2/Network) |
+| Cloud Provider | AWS (S3) |
 | Output Formats | Console, JSON |
 | Compliance | CIS AWS Foundations Benchmark |
 | Auth | AWS credentials / IAM roles |
@@ -29,8 +29,6 @@ Built to automate the tedious work of manually reviewing AWS environments for co
 ## Features
 
 - **S3 Security Assessment** — public access block status, encryption type (SSE-S3 vs SSE-KMS), versioning, and access logging
-- **IAM Security Review** — MFA enforcement, access key age, overly permissive policy detection
-- **Network Security Analysis** — security group misconfigurations, publicly exposed ports
 - **Structured Findings** — each finding carries severity, remediation steps, and CIS control mapping
 - **Multiple Report Formats** — human-readable console output and machine-readable JSON export
 
@@ -137,8 +135,8 @@ The findings below are from a real scan run against test S3 buckets in a sandbox
 ## Roadmap
 
 - [x] AWS S3 scanner
-- [ ] AWS IAM scanner
-- [ ] AWS EC2 / Network scanner
+- [ ] AWS IAM scanner — MFA enforcement, access key age, overly permissive policy detection
+- [ ] AWS EC2 / Network scanner — security group misconfigurations, publicly exposed ports
 - [ ] HTML report generation (Jinja2)
 - [ ] Multi-account support
 - [ ] Azure support
