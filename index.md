@@ -10,7 +10,7 @@ I'm a Senior Security Engineer with deep expertise across IT Service Management,
 
 ### [Infrastructure Security Scanner](https://github.com/petorske/infrastructure-security-scanner)
 
-A Python-based AWS security scanner that audits cloud infrastructure against CIS benchmarks, surfacing misconfigurations across S3, IAM, and network resources with actionable remediation guidance.
+A Python-based AWS security scanner that audits S3 infrastructure against CIS benchmarks, surfacing misconfigurations with actionable remediation guidance.
 
 **Stack:** Python · Boto3 · Click
 **Output:** Console · JSON
