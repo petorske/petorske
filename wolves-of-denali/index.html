@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wolves of Denali — 39 Years of Watching the Pack</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --slate: #1E2A38;
+    --slate-mid: #2B3D52;
+    --spruce: #1C3A2A;
+    --night: #141C26;
+    --glacier: #6A9AB5;
+    --glacier-muted: #4E7A94;
+    --lichen: #7A9A6E;
+    --stone: #8896A4;
+    --alpenglow: #D4728C;
+    --alpenglow-soft: #E8A0B2;
+    --tundra-gold: #D4A04A;
+    --tundra-red: #B85C3F;
+    --summit: #F0EDE6;
+    --snowfield: #E4E8EC;
+    --cloud: #D5DAE0;
+    --dawn: #F7F0EA;
+    --shadow: rgba(20,28,38,0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--summit);
+    color: var(--slate);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  ::selection { background: var(--alpenglow); color: white; }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 4rem 6vw 6rem;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(175deg, var(--night) 0%, var(--slate) 40%, var(--slate-mid) 65%, #3E4F63 80%, #6B5A6E 95%);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 45%;
+    background: linear-gradient(175deg, transparent 30%, rgba(212,114,140,0.12) 60%, rgba(212,114,140,0.2) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-topo {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.05;
+    overflow: hidden;
+  }
+
+  .hero-topo svg { width: 100%; height: 100%; }
+
+  .hero-stars {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 4s ease-in-out infinite;
+  }
+
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.7; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--glacier);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+
+  .hero h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 900;
+    line-height: 0.95;
+    color: var(--summit);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.5s;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--glacier);
+  }
+
+  .hero-sub {
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--cloud);
+    max-width: 560px;
+    line-height: 1.7;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.7s;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 2rem;
+    right: 6vw;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 1.2s;
+  }
+
+  .scroll-cue span {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--cloud);
+    writing-mode: vertical-rl;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: var(--cloud);
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--slate);
+    border-bottom: 3px solid var(--alpenglow);
+  }
+
+  .stat-item {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+  }
+
+  .stat-item:last-child { border-right: none; }
+  .stat-item:hover { background: rgba(255,255,255,0.03); }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--summit);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--glacier);
+    margin-top: 0.5rem;
+  }
+
+  section { padding: 6rem 6vw; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--alpenglow);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    max-width: 700px;
+    color: var(--slate);
+  }
+
+  .section-desc {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--slate-mid);
+    max-width: 620px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .context { background: var(--dawn); }
+
+  .context-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    max-width: 1100px;
+  }
+
+  .context-card {
+    background: white;
+    border-radius: 3px;
+    padding: 2.5rem;
+    box-shadow: 0 1px 4px var(--shadow);
+    border-left: 3px solid var(--glacier-muted);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .context-card:nth-child(2) { border-left-color: var(--lichen); }
+  .context-card:nth-child(3) { border-left-color: var(--tundra-red); }
+  .context-card:nth-child(4) { border-left-color: var(--tundra-gold); }
+
+  .context-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--shadow);
+  }
+
+  .context-card h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--slate);
+  }
+
+  .context-card p {
+    font-size: 0.95rem;
+    color: var(--slate-mid);
+    line-height: 1.7;
+  }
+
+  .chart-section {
+    background: white;
+    border-top: 1px solid var(--snowfield);
+  }
+
+  .chart-container {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .main-chart { width: 100%; height: 420px; position: relative; }
+
+  canvas { width: 100% !important; height: 100% !important; }
+
+  .chart-controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .chart-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--cloud);
+    background: transparent;
+    color: var(--slate-mid);
+    cursor: pointer;
+    transition: all 0.25s;
+    border-radius: 2px;
+  }
+
+  .chart-btn:hover { border-color: var(--alpenglow); color: var(--alpenglow); }
+
+  .chart-btn.active {
+    background: var(--slate);
+    color: var(--summit);
+    border-color: var(--slate);
+  }
+
+  .chart-legend {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--slate-mid);
+  }
+
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+
+  .pack-section { background: var(--spruce); color: var(--summit); }
+  .pack-section .section-label { color: var(--tundra-gold); }
+  .pack-section .section-title { color: var(--summit); }
+  .pack-section .section-desc { color: var(--cloud); }
+
+  .pack-viz {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .pack-chart-wrap { height: 380px; position: relative; }
+
+  .pack-insights { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .insight-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 3px;
+    padding: 1.5rem 2rem;
+    transition: border-color 0.3s;
+  }
+
+  .insight-card:hover { border-color: var(--tundra-gold); }
+
+  .insight-value {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--tundra-gold);
+  }
+
+  .insight-label { font-size: 0.85rem; color: var(--cloud); margin-top: 0.25rem; line-height: 1.6; }
+
+  .density-section { background: var(--snowfield); }
+
+  .density-chart-area { max-width: 1100px; height: 400px; position: relative; }
+
+  .heatmap-section { background: white; border-top: 1px solid var(--snowfield); overflow: visible; }
+
+  .heatmap-wrap { max-width: 1100px; overflow-x: auto; position: relative; }
+
+  .heatmap-grid {
+    display: grid;
+    grid-template-columns: 100px repeat(39, 1fr);
+    gap: 2px;
+    min-width: 800px;
+    position: relative;
+  }
+
+  .heatmap-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.55rem;
+    text-align: center;
+    color: var(--stone);
+    padding: 0.3rem 0;
+    overflow: visible;
+    position: relative;
+    z-index: 5;
+  }
+
+  .heatmap-row-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--slate-mid);
+    display: flex;
+    align-items: center;
+    padding-right: 0.75rem;
+    text-align: right;
+    justify-content: flex-end;
+  }
+
+  .heatmap-cell {
+    aspect-ratio: 1;
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.15s;
+    min-width: 14px;
+  }
+
+  .heatmap-cell:hover { transform: scale(1.4); z-index: 2; }
+
+  .heatmap-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--slate);
+    color: var(--summit);
+    padding: 0.4rem 0.7rem;
+    border-radius: 3px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .heatmap-cell:hover .heatmap-tooltip { display: block; }
+
+  .heatmap-color-key {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    color: var(--stone);
+    text-transform: uppercase;
+  }
+
+  .heatmap-gradient-bar {
+    width: 120px;
+    height: 10px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--glacier) 0%, var(--tundra-gold) 50%, var(--tundra-red) 100%);
+  }
+
+  .timeline-section { background: var(--dawn); border-top: 1px solid rgba(0,0,0,0.04); }
+
+  .timeline { max-width: 800px; position: relative; padding-left: 3rem; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--glacier-muted) 0%, var(--alpenglow) 50%, var(--tundra-gold) 100%);
+    opacity: 0.4;
+  }
+
+  .tl-item { position: relative; padding: 0 0 3rem 2rem; }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -3rem;
+    top: 0.5rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--alpenglow);
+    transform: translateX(-4px);
+    box-shadow: 0 0 0 3px rgba(212,114,140,0.2);
+  }
+
+  .tl-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--alpenglow);
+    margin-bottom: 0.3rem;
+  }
+
+  .tl-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--slate);
+  }
+
+  .tl-text {
+    font-size: 0.9rem;
+    color: var(--slate-mid);
+    line-height: 1.7;
+  }
+
+  .tl-text a {
+    color: var(--glacier-muted);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(78,122,148,0.3);
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .tl-text a:hover {
+    color: var(--alpenglow);
+    border-bottom-color: var(--alpenglow);
+  }
+
+  .methods-section { background: var(--slate); color: var(--summit); }
+  .methods-section .section-label { color: var(--glacier); }
+  .methods-section .section-title { color: var(--summit); }
+  .methods-section .section-desc { color: var(--cloud); }
+
+  .methods-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+  }
+
+  .method-card {
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 3px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .method-card:hover { border-color: rgba(255,255,255,0.2); }
+
+  .method-card::before {
+    content: attr(data-step);
+    position: absolute;
+    top: -0.5rem;
+    right: 1rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: rgba(255,255,255,0.04);
+  }
+
+  .method-card h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--summit);
+  }
+
+  .method-card p { font-size: 0.85rem; color: var(--cloud); line-height: 1.7; }
+
+  .contribute-section { background: var(--spruce); color: var(--summit); }
+  .contribute-section .section-label { color: var(--alpenglow); }
+  .contribute-section .section-title { color: var(--summit); }
+  .contribute-section .section-desc { color: var(--cloud); }
+
+  .contribute-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+  }
+
+  @media (max-width: 890px) {
+    .contribute-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 768px) {
+    .contribute-grid { grid-template-columns: 1fr; }
+  }
+
+  .contribute-card {
+    border-left: 3px solid var(--alpenglow);
+    padding: 2rem;
+    background: rgba(0,0,0,0.15);
+    border-radius: 3px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .contribute-card:nth-child(2) { border-left-color: var(--glacier); }
+  .contribute-card:nth-child(3) { border-left-color: var(--tundra-gold); }
+
+  .contribute-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+
+  .contribute-card h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+    color: var(--summit);
+  }
+
+  .contribute-card p {
+    font-size: 0.95rem;
+    color: var(--cloud);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .contribute-card a {
+    color: var(--alpenglow-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+    font-weight: 600;
+  }
+
+  .contribute-card a:hover { border-bottom-color: var(--alpenglow-soft); }
+
+  footer {
+    background: var(--night);
+    color: var(--cloud);
+    padding: 4rem 6vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  footer p { font-size: 0.8rem; line-height: 1.7; max-width: 500px; }
+
+  footer a {
+    color: var(--alpenglow-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  footer a:hover { border-bottom-color: var(--alpenglow-soft); }
+
+  .footer-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    text-align: right;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .stat-strip { grid-template-columns: repeat(2, 1fr); }
+    .context-grid, .pack-viz { grid-template-columns: 1fr; }
+    .methods-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 5vw; }
+  }
+
+  @media (max-width: 600px) {
+    .hero { padding: 3rem 5vw 4rem; }
+    .stat-strip { grid-template-columns: 1fr 1fr; }
+    .stat-item { padding: 1.5rem 1rem; }
+    .stat-num { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-topo">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="none" fill="none" stroke="rgba(200,213,220,0.6)" stroke-width="0.5">
+      <path d="M0 650 Q120 580 280 620 Q400 540 520 600 Q620 500 720 560 Q860 440 960 520 Q1080 460 1200 540 Q1320 480 1440 550"/>
+      <path d="M0 580 Q180 510 340 560 Q460 470 600 540 Q720 430 840 500 Q980 400 1100 480 Q1260 420 1440 490"/>
+      <path d="M0 500 Q200 440 380 490 Q520 400 660 470 Q800 370 940 440 Q1100 360 1260 430 T1440 410"/>
+      <path d="M0 420 Q250 370 450 410 Q600 340 750 390 Q900 310 1060 370 Q1200 310 1440 350"/>
+      <path d="M0 350 Q300 300 500 340 Q700 270 900 320 Q1100 260 1300 300 T1440 280"/>
+      <path d="M0 750 Q100 720 250 740 Q400 700 550 730 Q700 690 850 720 Q1000 700 1150 730 Q1300 710 1440 740"/>
+      <path d="M0 820 Q200 800 400 815 Q600 790 800 810 Q1000 795 1200 815 T1440 810"/>
+    </svg>
+  </div>
+  <div class="hero-stars" id="heroStars"></div>
+  <div class="hero-content">
+    <p class="hero-tag">National Park Service · Denali National Park & Preserve</p>
+    <h1>Wolves of<br><em>Denali</em></h1>
+    <p class="hero-sub">39 years of monitoring one of North America's last truly wild wolf populations. An interactive exploration of the data from 1986 - 2024.</p>
+  </div>
+</section>
+
+<div class="stat-strip">
+  <div class="stat-item">
+    <div class="stat-num">39</div>
+    <div class="stat-label">Years of Data</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">147</div>
+    <div class="stat-label">Peak Count (Fall '07)</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">20</div>
+    <div class="stat-label">Most Packs Monitored</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">18,820</div>
+    <div class="stat-label">Max Area km²</div>
+  </div>
+</div>
+
+<section class="context">
+  <div class="reveal">
+    <p class="section-label">01 — Background</p>
+    <h2 class="section-title">The Longest-Running Wolf Study in Interior Alaska</h2>
+    <p class="section-desc">Denali's wolves have been studied since Adolph Murie's groundbreaking fieldwork in 1939. The modern radio-collaring program launched in 1986 after park employees discovered poached wolf carcasses in 1985, sparking a decades-long commitment to understanding and protecting these packs.</p>
+  </div>
+  <div class="context-grid reveal">
+    <div class="context-card">
+      <h3>Why Wolves Matter</h3>
+      <p>As a keystone predator in interior Alaska, wolves regulate moose, caribou, and Dall's sheep populations, which in turn shape vegetation patterns across the entire landscape. Tracking wolves means tracking the health of an entire ecosystem.</p>
+    </div>
+    <div class="context-card">
+      <h3>How They're Monitored</h3>
+      <p>Biologists maintain one or two radio-collared wolves per known pack. Collared wolves are located approximately twice per month, with intensive counts in September - October for fall pack sizes and pup survival, and again in March for late-winter pack sizes.</p>
+    </div>
+    <div class="context-card">
+      <h3>The Human Factor</h3>
+      <p>From 1986 - 2013, roughly 25% of collared wolf deaths were caused by humans, mostly through legal harvest when wolves ventured beyond park boundaries. About a third were killed by rival packs, with the rest from natural causes including starvation, drowning, and disease.</p>
+    </div>
+    <div class="context-card">
+      <h3>A Shifting Mosaic</h3>
+      <p>The population is a constantly shifting mosaic of pack territories. Packs form, split, merge, and vanish. More than 400 wolves have been collared since 1986, revealing complex social dynamics, long-distance dispersals, and surprising adoptions of unrelated wolves.</p>
+    </div>
+  </div>
+</section>
+
+<section class="chart-section">
+  <div class="reveal">
+    <p class="section-label">02 — Population Trends</p>
+    <h2 class="section-title">Counting the Pack</h2>
+    <p class="section-desc">Spring counts represent late-winter survival; fall counts capture the annual boom after pup season. The gap between them reveals the packs' parenting successes or failures.</p>
+  </div>
+  <div class="chart-container reveal">
+    <div class="chart-controls">
+      <button class="chart-btn active" data-chart="wolves">Wolf Count</button>
+      <button class="chart-btn" data-chart="packs">Packs Monitored</button>
+      <button class="chart-btn" data-chart="density">Wolf Density</button>
+    </div>
+    <div class="main-chart"><canvas id="mainChart"></canvas></div>
+    <div class="chart-legend" id="mainLegend"></div>
+  </div>
+</section>
+
+<section class="pack-section">
+  <div class="reveal">
+    <p class="section-label">03 — Pack Dynamics</p>
+    <h2 class="section-title">The Social Unit</h2>
+    <p class="section-desc">Mean pack size fluctuates with prey availability, pup survival, and territorial conflicts. Fall packs are almost always larger than spring - the difference represents the year's pup cohort.</p>
+  </div>
+  <div class="pack-viz reveal">
+    <div class="pack-chart-wrap"><canvas id="packChart"></canvas></div>
+    <div class="pack-insights">
+      <div class="insight-card">
+        <div class="insight-value">12.4</div>
+        <div class="insight-label">Largest mean fall pack size (1990) - a year of abundant prey and high pup survival</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-value">4.1</div>
+        <div class="insight-label">Smallest mean spring pack size (2009) - following a period of declining prey vulnerability</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-value">+2.0</div>
+        <div class="insight-label">Average seasonal increase from spring to fall, representing pup recruitment</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-value">5 : 1</div>
+        <div class="insight-label">Typical Denali pack structure - a breeding pair plus offspring from 1 - 3 years</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="density-section">
+  <div class="reveal">
+    <p class="section-label">04 — Territorial Range</p>
+    <h2 class="section-title">Tracking the Territory</h2>
+    <p class="section-desc">As GPS collar technology improved through the 2000s, biologists could map territory boundaries more precisely, generally increasing the estimated area. But wolves per square kilometer tells the real density story.</p>
+  </div>
+  <div class="density-chart-area reveal"><canvas id="densityChart"></canvas></div>
+</section>
+
+<section class="heatmap-section">
+  <div class="reveal">
+    <p class="section-label">05 — At a Glance</p>
+    <h2 class="section-title">39 Years, One Grid</h2>
+    <p class="section-desc">Each cell is one metric for one year. Hover for exact numbers.</p>
+  </div>
+  <div class="heatmap-wrap reveal" id="heatmapContainer"></div>
+</section>
+
+<section class="timeline-section">
+  <div class="reveal">
+    <p class="section-label">06 — Key Moments</p>
+    <h2 class="section-title">Notable Events in Denali Wolf History</h2>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-year">1939 - 1941</div>
+      <div class="tl-title">Murie's Groundbreaking Fieldwork</div>
+      <p class="tl-text">Adolph Murie conducted the first major scientific study of wolves at what was then Mount McKinley National Park, producing <a href="https://archive.org/details/wolvesofmountmck0000muri/page/n5/mode/2up" target="_blank" rel="noopener"><em>The Wolves of Mount McKinley</em></a> - one of the earliest landmark publications in wolf ecology. The full text is available to read on the Internet Archive.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1985</div>
+      <div class="tl-title">Poached Carcasses Discovered</div>
+      <p class="tl-text">Park staff found the skinned remains of seven wolves in remote areas of Denali. The discovery revealed the extent of illegal aerial poaching and catalyzed the decision to launch intensive radio-collar monitoring.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1986</div>
+      <div class="tl-title">Modern Monitoring Begins</div>
+      <p class="tl-text">Researchers L. David Mech and Layne Adams initiated a comprehensive wolf-collaring project, starting with just 4 packs and 26 wolves counted that spring. The program has continued uninterrupted for nearly four decades.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1990 - 1991</div>
+      <div class="tl-title">Population Peak Era</div>
+      <p class="tl-text">The population surged to 137 wolves counted in fall 1991, with the largest mean pack sizes in the study's history. Favorable prey conditions and high pup survival drove the boom.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2007</div>
+      <div class="tl-title">All-Time High</div>
+      <p class="tl-text">Fall 2007 saw 147 wolves counted across 20 packs - the highest single count in the monitoring record. Twenty packs were being tracked simultaneously, the most in the program's history.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2013 - 2015</div>
+      <div class="tl-title">Declining Density</div>
+      <p class="tl-text">Wolf density dropped to historic lows despite similar monitoring effort. Low snowfall had reduced prey vulnerability, and several packs fragmented or disappeared. GPS technology simultaneously expanded estimated territory areas.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2020</div>
+      <div class="tl-title">COVID Threatens Funding</div>
+      <p class="tl-text">Tourism collapse during the pandemic put the monitoring program's funding at risk. The National Park Foundation stepped in to ensure the world's longest-running interior Alaska wolf study continued without interruption.</p>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2024</div>
+      <div class="tl-title">Most Recent Data</div>
+      <p class="tl-text">The latest counts show 56 wolves in both spring and fall across 10 - 11 packs - a notable decline from the 2021 - 2022 rebound, underscoring the population's ongoing natural fluctuations.</p>
+    </div>
+  </div>
+</section>
+
+<section class="methods-section">
+  <div class="reveal">
+    <p class="section-label">07 — Methodology</p>
+    <h2 class="section-title">How the Data Is Gathered</h2>
+    <p class="section-desc">A combination of decades-old field techniques and modern satellite technology keeps this program running across millions of acres of wilderness.</p>
+  </div>
+  <div class="methods-grid reveal">
+    <div class="method-card" data-step="01">
+      <h3>Locate & Collar</h3>
+      <p>After fresh snowfall, researchers track wolf packs by air and dart one or two members, typically the breeding pair, from a helicopter. Wolves are weighed, measured, blood-sampled, and fitted with VHF or GPS collars.</p>
+    </div>
+    <div class="method-card" data-step="02">
+      <h3>Track & Count</h3>
+      <p>Collared wolves are located approximately twice monthly via radio telemetry. Intensive counts occur in September - October (fall pack sizes and pup counts) and March (late-winter pack sizes), producing the spring and fall numbers in this dataset.</p>
+    </div>
+    <div class="method-card" data-step="03">
+      <h3>Map & Estimate</h3>
+      <p>A full year of telemetry locations (April - March) defines each pack's territory. Combined pack territories produce the monitored area estimate. Wolf counts divided by this area give the density - wolves per 1,000 km².</p>
+    </div>
+  </div>
+</section>
+
+<section class="contribute-section">
+  <div class="reveal">
+    <p class="section-label">08 — Get Involved</p>
+    <h2 class="section-title">Help Support Denali's Wolves</h2>
+    <p class="section-desc">The field research presented here represents decades of dedicated biologists working in extreme conditions. You can contribute to wolf conservation in Denali.</p>
+  </div>
+  <div class="contribute-grid reveal">
+    <div class="contribute-card">
+      <h3>Report Wolf Sightings</h3>
+      <p>If you visit Denali and observe wolves, your sighting report contributes valuable data to ongoing research efforts. The National Park Service maintains a wolf sighting index that helps track real-time pack activity and visitor engagement with the landscape.</p>
+      <a href="https://www.nps.gov/dena/learn/nature/wolf-sighting-index.htm" target="_blank" rel="noopener">View the Wolf Sighting Index →</a>
+    </div>
+    <div class="contribute-card">
+      <h3>Support the Research</h3>
+      <p>The wolf monitoring program depends on sustained funding for field operations, helicopter surveys, and collar maintenance. Consider supporting the National Park Foundation or donating directly to Denali's conservation initiatives to ensure this critical research continues.</p>
+      <a href="https://www.nationalparks.org/our-mission-history" target="_blank" rel="noopener">Learn about the National Park Foundation →</a>
+    </div>
+    <div class="contribute-card">
+      <h3>Protect the Wolf Buffer</h3>
+      <p>Alaska Wildlife Alliance (AWA) advocates for a protective habitat buffer zone adjacent to Denali to shield wolves from hunting and trapping. Between 2000 - 2010, the buffer increased both wolf viewing opportunities and visitor experiences. Support efforts to reinstate this critical protection.</p>
+      <a href="https://www.akwildlife.org/denali-wolf-buffer" target="_blank" rel="noopener">Explore AWA's Wolf Buffer Campaign →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <p>
+      Data: <a href="https://irma.nps.gov/DataStore/Reference/Profile/2218298" target="_blank">NPS IRMA DataStore — Wolf Monitoring and Research in Denali National Park and Preserve and Yukon-Charley Rivers National Preserve</a>. Public domain, U.S. Government Works.
+      Collected by Bridget Borg, Kaija Klauder, M. Sorum, and colleagues at the National Park Service, Central Alaska Network.
+    </p>
+    <p style="margin-top: 0.5rem; opacity: 0.6;">
+      This page is an independent visualization of publicly available data by a wolf advocate and is not affiliated with or endorsed by the National Park Service.
+    </p>
+  </div>
+  <div class="footer-right">
+    Visualization built 2025<br>
+    Data spans 1986 - 2024
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+const DATA = {
+  years: [1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024],
+  packsSpring: [4,8,14,13,10,13,15,12,10,12,11,11,12,13,17,16,15,18,14,15,15,16,20,16,12,10,10,11,10,12,9,10,10,10,12,14,14,13,11],
+  packsFall: [4,9,14,11,11,13,15,12,12,11,11,12,12,15,18,18,14,11,14,15,17,20,14,15,11,8,9,12,11,11,10,9,11,12,12,12,14,11,10],
+  wolvesSpring: [26,37,69,98,106,111,103,68,61,59,69,78,61,69,71,87,73,75,78,66,103,93,99,65,59,71,70,49,51,52,49,72,75,70,68,93,105,81,56],
+  wolvesFall: [22,70,121,127,136,137,120,93,72,80,104,75,68,80,112,91,86,84,78,106,111,147,86,89,88,75,57,67,55,62,76,75,85,74,95,121,102,59,56],
+  packSizeSpring: [6.5,4.6,4.9,7.5,10.6,8.5,6.9,5.7,6.1,4.9,6.3,7.1,5.1,5.3,4.2,5.4,4.9,4.2,5.6,4.4,6.9,5.8,5.0,4.1,4.9,7.1,7.0,4.5,5.1,4.3,5.4,7.2,7.5,7.0,5.7,6.6,7.0,6.0,5.0],
+  packSizeFall: [5.5,7.8,8.6,11.5,12.4,10.5,8.0,7.8,6.0,7.3,9.5,6.3,5.7,5.3,6.2,5.1,6.1,7.6,5.6,7.1,6.5,7.4,6.1,5.9,8.0,9.4,6.3,5.6,5.1,5.6,7.6,8.3,7.7,6.2,7.9,10.1,7.0,5.0,5.0],
+  areaSpring: [7380,12125,15355,16810,13930,14275,13620,9900,11145,12120,12640,13080,13121,12699,14378,13802,13026,11682,16061,14630,15367,17439,17757,16607,17061,17994,18340,15473,17640,18820,17153,15231,13963,12962,15333,16359,17034,17034,15937],
+  areaFall: [8180,13150,14670,15240,13930,14275,13620,9900,11145,12045,12776,12808,12578,12699,14554,13802,12226,11682,14630,15367,17439,17757,16607,17061,17994,17994,18340,15473,17640,18820,17153,15231,13963,12962,15333,16359,17034,17034,15973]
+};
+
+DATA.densitySpring = DATA.wolvesSpring.map((w, i) => +(w / DATA.areaSpring[i] * 1000).toFixed(2));
+DATA.densityFall = DATA.wolvesFall.map((w, i) => +(w / DATA.areaFall[i] * 1000).toFixed(2));
+
+const C = {
+  alpenglow: '#D4728C',
+  alpenglowFill: 'rgba(212,114,140,0.12)',
+  glacier: '#6A9AB5',
+  glacierFill: 'rgba(106,154,181,0.12)',
+  tundraGold: '#D4A04A',
+  tundraGoldFill: 'rgba(212,160,74,0.15)',
+  tundraRed: '#B85C3F',
+  tundraRedFill: 'rgba(184,92,63,0.12)',
+  lichen: '#7A9A6E',
+  lichenFill: 'rgba(122,154,110,0.12)',
+  slate: '#1E2A38',
+  summit: '#F0EDE6',
+  stone: '#8896A4',
+};
+
+Chart.defaults.font.family = "'Source Sans 3', sans-serif";
+Chart.defaults.font.size = 11;
+Chart.defaults.color = '#6B7580';
+
+const gridLight = { color: 'rgba(0,0,0,0.05)', drawBorder: false };
+const gridDark = { color: 'rgba(255,255,255,0.07)', drawBorder: false };
+const tooltipLight = {
+  backgroundColor: C.slate, titleColor: C.summit, bodyColor: C.summit, cornerRadius: 3,
+  titleFont: { family: "'JetBrains Mono', monospace", size: 11 },
+  bodyFont: { family: "'Source Sans 3', sans-serif", size: 12 }, padding: 12,
+};
+const tooltipDark = {
+  backgroundColor: C.summit, titleColor: C.slate, bodyColor: '#3D4D5E', cornerRadius: 3,
+  titleFont: { family: "'JetBrains Mono', monospace", size: 11 },
+  bodyFont: { family: "'Source Sans 3', sans-serif", size: 12 }, padding: 12,
+};
+
+const mainCtx = document.getElementById('mainChart').getContext('2d');
+let mainChart;
+
+const chartConfigs = {
+  wolves: {
+    datasets: [
+      { label: 'Fall Count', data: DATA.wolvesFall, borderColor: C.alpenglow, backgroundColor: C.alpenglowFill, fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 6, borderWidth: 2.5 },
+      { label: 'Spring Count', data: DATA.wolvesSpring, borderColor: C.glacier, backgroundColor: C.glacierFill, fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 6, borderWidth: 2.5 }
+    ],
+    yLabel: 'Wolves Counted',
+    legend: [{ color: C.alpenglow, label: 'Fall Count' }, { color: C.glacier, label: 'Spring Count' }]
+  },
+  packs: {
+    datasets: [
+      { label: 'Fall', data: DATA.packsFall, borderColor: C.tundraGold, backgroundColor: C.tundraGoldFill, fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 6, borderWidth: 2.5 },
+      { label: 'Spring', data: DATA.packsSpring, borderColor: C.lichen, backgroundColor: C.lichenFill, fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 6, borderWidth: 2.5 }
+    ],
+    yLabel: 'Packs Monitored',
+    legend: [{ color: C.tundraGold, label: 'Fall' }, { color: C.lichen, label: 'Spring' }]
+  },
+  density: {
+    datasets: [
+      { label: 'Fall Density', data: DATA.densityFall, borderColor: C.tundraRed, backgroundColor: C.tundraRedFill, fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 6, borderWidth: 2.5 },
+      { label: 'Spring Density', data: DATA.densitySpring, borderColor: C.glacier, backgroundColor: C.glacierFill, fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 6, borderWidth: 2.5 }
+    ],
+    yLabel: 'Wolves per 1,000 km²',
+    legend: [{ color: C.tundraRed, label: 'Fall Density' }, { color: C.glacier, label: 'Spring Density' }]
+  }
+};
+
+function createMainChart(key) {
+  const cfg = chartConfigs[key];
+  if (mainChart) mainChart.destroy();
+  mainChart = new Chart(mainCtx, {
+    type: 'line',
+    data: { labels: DATA.years, datasets: cfg.datasets },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: { legend: { display: false }, tooltip: tooltipLight },
+      scales: {
+        x: { grid: gridLight, ticks: { maxTicksLimit: 15, font: { family: "'JetBrains Mono', monospace", size: 10 } } },
+        y: { grid: gridLight, title: { display: true, text: cfg.yLabel, font: { family: "'JetBrains Mono', monospace", size: 10 }, color: '#999' }, beginAtZero: true }
+      }
+    }
+  });
+  document.getElementById('mainLegend').innerHTML = cfg.legend.map(l =>
+    `<div class="legend-item"><div class="legend-dot" style="background:${l.color}"></div>${l.label}</div>`
+  ).join('');
+}
+createMainChart('wolves');
+
+document.querySelectorAll('.chart-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.chart-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    createMainChart(btn.dataset.chart);
+  });
+});
+
+new Chart(document.getElementById('packChart').getContext('2d'), {
+  type: 'bar',
+  data: {
+    labels: DATA.years,
+    datasets: [
+      { label: 'Fall Pack Size', data: DATA.packSizeFall, backgroundColor: 'rgba(212,160,74,0.75)', borderRadius: 2, barPercentage: 0.7 },
+      { label: 'Spring Pack Size', data: DATA.packSizeSpring, backgroundColor: 'rgba(106,154,181,0.6)', borderRadius: 2, barPercentage: 0.7 }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: { legend: { display: false }, tooltip: tooltipDark },
+    scales: {
+      x: { grid: gridDark, ticks: { color: 'rgba(255,255,255,0.4)', maxTicksLimit: 12, font: { family: "'JetBrains Mono', monospace", size: 9 } } },
+      y: { grid: gridDark, ticks: { color: 'rgba(255,255,255,0.4)' }, title: { display: true, text: 'Mean Pack Size', color: 'rgba(255,255,255,0.4)', font: { family: "'JetBrains Mono', monospace", size: 10 } } }
+    }
+  }
+});
+
+new Chart(document.getElementById('densityChart').getContext('2d'), {
+  type: 'line',
+  data: {
+    labels: DATA.years,
+    datasets: [
+      { label: 'Monitored Area (km²)', data: DATA.areaFall, borderColor: C.stone, backgroundColor: 'rgba(136,150,164,0.1)', fill: true, tension: 0.3, pointRadius: 2, pointHoverRadius: 5, borderWidth: 2, yAxisID: 'yArea' },
+      { label: 'Fall Wolf Count', data: DATA.wolvesFall, borderColor: C.alpenglow, backgroundColor: 'transparent', tension: 0.3, pointRadius: 3, pointHoverRadius: 6, borderWidth: 2.5, yAxisID: 'yWolves' }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: true, position: 'top', align: 'start', labels: { font: { family: "'JetBrains Mono', monospace", size: 10 }, usePointStyle: true, pointStyle: 'circle', padding: 20 } },
+      tooltip: tooltipLight
+    },
+    scales: {
+      x: { grid: gridLight, ticks: { maxTicksLimit: 15, font: { family: "'JetBrains Mono', monospace", size: 10 } } },
+      yArea: { type: 'linear', position: 'right', grid: { display: false }, title: { display: true, text: 'Monitored Area (km²)', color: C.stone, font: { family: "'JetBrains Mono', monospace", size: 10 } }, ticks: { color: C.stone } },
+      yWolves: { type: 'linear', position: 'left', grid: gridLight, title: { display: true, text: 'Wolves Counted (Fall)', color: C.alpenglow, font: { family: "'JetBrains Mono', monospace", size: 10 } }, ticks: { color: C.alpenglow }, beginAtZero: true }
+    }
+  }
+});
+
+// Heatmap
+(function() {
+  const container = document.getElementById('heatmapContainer');
+  const metrics = [
+    { key: 'wolvesFall', label: 'Wolves (Fall)', min: 22, max: 147 },
+    { key: 'wolvesSpring', label: 'Wolves (Spring)', min: 26, max: 111 },
+    { key: 'packSizeFall', label: 'Pack Size (Fall)', min: 5, max: 12.4 },
+    { key: 'packSizeSpring', label: 'Pack Size (Spr)', min: 4.1, max: 10.6 },
+    { key: 'packsFall', label: 'Packs (Fall)', min: 4, max: 20 },
+    { key: 'packsSpring', label: 'Packs (Spring)', min: 4, max: 20 },
+  ];
+
+  function heatColor(norm) {
+    let r, g, b;
+    if (norm < 0.5) {
+      const t = norm / 0.5;
+      r = Math.round(106 + (212 - 106) * t);
+      g = Math.round(154 + (160 - 154) * t);
+      b = Math.round(181 + (74 - 181) * t);
+    } else {
+      const t = (norm - 0.5) / 0.5;
+      r = Math.round(212 + (184 - 212) * t);
+      g = Math.round(160 + (92 - 160) * t);
+      b = Math.round(74 + (63 - 74) * t);
+    }
+    return `rgba(${r},${g},${b},${0.35 + norm * 0.65})`;
+  }
+
+  const grid = document.createElement('div');
+  grid.className = 'heatmap-grid';
+  grid.innerHTML = '<div class="heatmap-row-label"></div>';
+  DATA.years.forEach((y, i) => {
+    grid.innerHTML += `<div class="heatmap-header">${i % 3 === 0 ? ("'" + String(y).slice(2)) : ''}</div>`;
+  });
+
+  metrics.forEach(m => {
+    grid.innerHTML += `<div class="heatmap-row-label">${m.label}</div>`;
+    DATA[m.key].forEach((val, i) => {
+      const norm = Math.max(0, Math.min(1, (val - m.min) / (m.max - m.min)));
+      grid.innerHTML += `<div class="heatmap-cell" style="background:${heatColor(norm)}"><div class="heatmap-tooltip">${DATA.years[i]}: ${val}</div></div>`;
+    });
+  });
+
+  container.appendChild(grid);
+  const key = document.createElement('div');
+  key.className = 'heatmap-color-key';
+  key.innerHTML = `<span>Low</span><div class="heatmap-gradient-bar"></div><span>High</span>`;
+  container.appendChild(key);
+})();
+
+// Stars
+(function() {
+  const c = document.getElementById('heroStars');
+  for (let i = 0; i < 60; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.style.left = Math.random() * 100 + '%';
+    s.style.top = Math.random() * 55 + '%';
+    s.style.animationDelay = (Math.random() * 5) + 's';
+    s.style.animationDuration = (3 + Math.random() * 4) + 's';
+    if (Math.random() > 0.7) { s.style.width = '3px'; s.style.height = '3px'; }
+    c.appendChild(s);
+  }
+})();
+
+// Scroll reveals
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
